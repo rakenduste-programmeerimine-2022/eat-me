@@ -3,7 +3,7 @@
 ## Projekti kirjeldus
 Külaline võib uurida kodulehe ning retsepte, leida soovitud rooga otsingu abil. Sisseloginud kasutaja saab valitud ingrediendite põhjal leida sobivaid retsepte, sorteerida neid kalorite ja valmistuse aja järgi. Programm väljastab neid andmebaasist. Sobiva roa jaoks on võimalik avada valmistuse sammud või märkida lemmikuna selleks, et kiiresti leida neid pärast. 
 ### Projekti funktsionaalsused
--Roade leidmine otsingu abil
+- Roade leidmine otsingu abil
 - Registreerumine
 - Sisse logimine
 - Kasutaja valitud toiduaineid sisaldavate retseptide otsimine
