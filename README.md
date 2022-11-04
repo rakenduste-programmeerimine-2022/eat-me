@@ -11,6 +11,6 @@ Külaline võib uurida kodulehe ning retsepte, leida soovitud rooga otsingu abil
 - Roade valmistamise sammud
 - Lemmikute retseptide salvestamine
 ## Projekti autorid
-# Nikita Kajalin @kajalinn
-# Andres Sikka @andressikka
-# Dmitri Šibin @DmitriShibin1
+- Nikita Kajalin @kajalinn
+- Andres Sikka @andressikka
+- Dmitri Šibin @DmitriShibin1
