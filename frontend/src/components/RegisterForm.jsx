@@ -3,7 +3,6 @@ import {Box, Typography, TextField, makeStyles} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import {useForm} from "react-hook-form";
 // import Axios from 'axios'
-import bcrypt from 'bcrypt';
 // import jwt from 'jwt-simple';
 
 
@@ -27,7 +26,6 @@ export const RegisterForm = () => {
 
     const onSubmit = (data) => {
         console.log(data)
-        const hashedPassword = bcrypt.hashSync(data.password, 6)
 
 
         fetch('http://localhost:5000/register', {
@@ -39,7 +37,6 @@ export const RegisterForm = () => {
             body: JSON.stringify({
                 name: data.fullname,
                 email: data.email,
-                password: hashedPassword
             })
         }).then((res) => res.json())
             .then((Result) => {

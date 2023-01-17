@@ -6,6 +6,11 @@ import {AppBar, Container, Toolbar, IconButton, Typography, Box} from '@material
 import {makeStyles} from '@material-ui/core/styles'
 
 
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import {DialogTitle, DialogContent, DialogContentText} from "@material-ui/core/";
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,44 +27,57 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
+
 export const Header = () => {
   const classes = useStyles();
-  
+
   return (
-    <AppBar position="fixed" color="inherit">
-      <Container fixed>
-        <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu" className={classes.logoButton}>
-            <Link to="/" ><img src={logo} height={80} alt='logo' /></Link>
-          </IconButton>
-          <Box className={classes.links}>
-            <Typography style={{marginRight:'30px', marginLeft:'30px'}} variant="h6">
-              <Link to="/recipes" style={{textDecoration: 'none', color: 'black'}}>Recipes</Link>
-            </Typography>
-            <Typography variant="h6">
-              <Link to="/about" style={{textDecoration: 'none', color: 'black'}}>About</Link>
-            </Typography>
-          </Box>
-          <Box mr={3}>
-            <Link to="/login" style={{textDecoration: 'none'}}>
-              <Button                
-                variant = 'contained'
-                style = {{color: 'black', backgroundColor: 'orange', borderColor: 'black', marginRight: '20px', width: '100px'}}                
+      <AppBar position="fixed" color="inherit">
+        <Container fixed>
+          <Toolbar>
+            <IconButton edge="start" color="inherit" aria-label="menu" className={classes.logoButton}>
+              <Link to="/"><img src={logo} height={80} alt='logo'/></Link>
+            </IconButton>
+            <Box className={classes.links}>
+              <Typography style={{marginRight: '30px', marginLeft: '30px'}} variant="h6">
+                <Link to="/recipes" style={{textDecoration: 'none', color: 'black'}}>Recipes</Link>
+              </Typography>
+              <Typography variant="h6">
+                <Link to="/about" style={{textDecoration: 'none', color: 'black'}}>About</Link>
+              </Typography>
+            </Box>
+            <Box mr={3}>
+              <Link to="/login" style={{textDecoration: 'none'}}>
+              <Button
+                  variant='contained'
+                  style={{
+                    color: 'black',
+                    backgroundColor: 'orange',
+                    borderColor: 'black',
+                    marginRight: '20px',
+                    width: '100px'
+                  }}
               >
                 Login
               </Button>
-            </Link>
-            <Link to="/register" style={{textDecoration: 'none'}}>
-             <Button
-                variant = 'contained'
-                style = {{color: 'black', backgroundColor: 'orange', borderColor: 'black', marginRight: '20px', width: '100px'}}
-              >
-                Sign up
-              </Button>
-            </Link>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+              </Link>
+              <Link to="/register" style={{textDecoration: 'none'}}>
+                <Button
+                    variant='contained'
+                    style={{
+                      color: 'black',
+                      backgroundColor: 'orange',
+                      borderColor: 'black',
+                      marginRight: '20px',
+                      width: '100px'
+                    }}
+                >
+                  Sign up
+                </Button>
+              </Link>
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
   );
 }
