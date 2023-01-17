@@ -7,7 +7,10 @@ import { About } from './pages/About';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { NotFoundPage } from './pages/NotFoundPage';
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom';
+
+import {CookerModal} from './components/CookerModal';
+import {Cooker} from "./pages/Cooker";
 
 
 // import {Box} from '@material-ui/core';
@@ -39,6 +42,7 @@ function App() {
       </Box> */}
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/Cooker" element={<Cooker />} />
         <Route path="/recipes" element={<Recipes />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
