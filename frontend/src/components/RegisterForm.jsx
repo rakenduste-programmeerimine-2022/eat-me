@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Box, Typography, TextField, makeStyles} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import {useForm} from "react-hook-form";
-// import Axios from 'axios'
+import Axios from 'axios'
 // import jwt from 'jwt-simple';
 
 
@@ -25,28 +25,16 @@ export const RegisterForm = () => {
     const {register, getValues, handleSubmit, formState: {errors}} = useForm()
 
     const onSubmit = (data) => {
-        console.log(data)
-
-
-        fetch('http://localhost:5000/register', {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name: data.fullname,
-                email: data.email,
-            })
-        }).then((res) => res.json())
-            .then((Result) => {
-                if (Result.Status === 'Success'){
-
-                    this.props.history.push("/Dashboard");  //auth home page, nado sdelatj
-                } else{
-                    alert('Srrrrrry !!!! Un-authenticated User !!!!!')
-                }})
-        window.location = '/cooker';
+        delete data['confirm_password']
+        // console.log(data)
+        try{
+            Axios.post('http://localhost:5000/users/register', data)
+                .then(res => console.log(res.data))
+        } catch (err){
+            console.log(err)
+        }
+        window.location = '/recipes';
+        // console.log('otpravil')
     }
 
     return (
