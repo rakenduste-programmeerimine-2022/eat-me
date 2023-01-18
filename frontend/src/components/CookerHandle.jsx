@@ -82,6 +82,9 @@ function ChildModal() {
 
 function valuetext(value) {
     return `${value}°C`;
+
+}function valuetext2(value) {
+    return `${value}°C`;
 }
 
 const minDistance = 10;
@@ -126,6 +129,20 @@ export const CookerHandle = (props) => {
             setValue1([value1[0], Math.max(newValue[1], value1[0] + minDistance)]);
         }
     };
+    //----------------------------------------------------------------------------------    //----------------------------------------------------------------------------------
+    const [value2, setValue2] = React.useState([15, 50]);
+
+    const handleChange2 = (event,newValue, activeThumb) => {
+        if (!Array.isArray(newValue)) {
+            return;
+        }
+
+        if (activeThumb === 0) {
+            setValue2([Math.min(newValue[0], value2[1] - minDistance), value2[1]]);
+        } else {
+            setValue2([value2[0], Math.max(newValue[1], value2[0] + minDistance)]);
+        }
+    };
     //----------------------------------------------------------------------------------
     return (
         <main style={{width:'90%', height:'600px', marginTop:'10px'}}>
@@ -145,7 +162,12 @@ export const CookerHandle = (props) => {
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={handleClose}>Submit</Button>
+                            <Button variant="contained"
+                                    color="primary"
+                                    onClick={handleClose}
+                                    style = {{color: 'black', backgroundColor: 'orange', borderColor: 'black', height: '40px'}}>
+                                Submit
+                            </Button>
                         </DialogActions>
                     </Dialog>
                     <Box>
@@ -171,15 +193,14 @@ export const CookerHandle = (props) => {
                             Cooking time (min)
                         </Typography>
                         <Slider
-                            getAriaLabel={() => 'Cooking time'}
-                            value={cookingTime}
-                            style={{width:'200px'}}
-                            onChange={changeCTValue}
+                            getAriaLabel={() => "Minimum distance"}
+                            value={value2}
+                            onChange={handleChange2}
                             valueLabelDisplay="auto"
+                            getAriaValueText={valuetext2}
+                            disableSwap
                             min={0}
-                            step={10}
-                            max={120}
-                            getAriaValueText={getCookingTime}
+                            max={100}
                             marks={marksCT}
                         />
                     </Box>
