@@ -78,7 +78,6 @@ export const Homepage = () => {
             {/* </Box> */}
           </Container>
         </Paper>
-        <Paper>
           <Container>
             <Box>
               <Grid className={classes.gridContainer} container>
@@ -118,7 +117,6 @@ export const Homepage = () => {
               </Grid>
             </Box>
           </Container>
-        </Paper>
       </main>
   )
 }

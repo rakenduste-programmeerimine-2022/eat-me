@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import {Box, Typography, TextField, makeStyles} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-import {useForm} from "react-hook-form";
 import Axios from 'axios'
+import {useForm} from "react-hook-form";
 // import jwt from 'jwt-simple';
 
 
@@ -33,7 +33,9 @@ export const RegisterForm = () => {
         } catch (err){
             console.log(err)
         }
-        window.location = '/recipes';
+        alert("Success! Redirecting to login page.")
+        window.location = '/login';
+        // console.log(data)
         // console.log('otpravil')
     }
 
@@ -48,12 +50,12 @@ export const RegisterForm = () => {
                 <TextField
                     id="fullName"
                     label="Full name"
-                    name="fullname"
+                    name="fullName"
                     margin="normal"
                     autoFocus
-                    {...register("fullname", {required: "Please enter full name"})}
-                    error={!!errors?.fullname}
-                    helperText={errors?.fullname ? errors.fullname.message : null}
+                    {...register("fullName", {required: "Please enter full name"})}
+                    error={!!errors?.fullName}
+                    helperText={errors?.fullName ? errors.fullName.message : null}
                     // value={fullName}
                     // onChange={(e) => setFullName(e.target.value)}
                     style={{width: '375px' }}

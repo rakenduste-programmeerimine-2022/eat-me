@@ -1,32 +1,16 @@
-const bcrypt = require('bcrypt')
-const {validationResult} = require('express-validator')
-const User = require('../models/user')
 
-//registration post request handling
+exports.allAccess = (req, res) => {
+    res.status(200).send("Public Content.");
+};
 
-const registerUser = async (req, res) => {
-    const errors = validationResult(req);
-    if(!errors.isEmpty()){
-        return res.status(400).json(errors.array());
-    }
+exports.userBoard = (req, res) => {
+    res.status(200).send("User Content.");
+};
 
-    const password = req.body.password;
-    const salt = await bcrypt.genSalt(6);
-    const passwordHash = await bcrypt.hash(password, salt);
+exports.adminBoard = (req, res) => {
+    res.status(200).send("Admin Content.");
+};
 
-    const doc = new User({
-        fullName: req.body.fullName,
-        email: req.body.email,
-        passwordHash,
-    });
-
-    const user = await doc.save();
-    res.json(user)
-}
-
-const loginUser = async(req, res) => {
-
-}
-
-
-module.exports = {registerUser}
+exports.moderatorBoard = (req, res) => {
+    res.status(200).send("Moderator Content.");
+};

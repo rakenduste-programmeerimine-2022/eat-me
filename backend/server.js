@@ -2,8 +2,10 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
-const usersRouter = require('./routes/users.js')
-
+// const usersRouter = require('./routes/user.routes.js')
+const authUsersRouter = require('./routes/auth.routes')
+const recipeRouter = require('./routes/recipe.routes')
+const Recipe = require('./models/recipe')
 
 mongoose.set("strictQuery", false);
 mongoose
@@ -22,8 +24,10 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use(express.json())
 
-app.use('/users', usersRouter);
-
+app.use('/users', authUsersRouter);
+// app.use('/recipe', recipeRouter)
+// app.use('/users', usersRouter);
+//
 // app.post('/register', registerValidator, async (req, res) => {
 //     const errors = validationResult(req);
 //     if(!errors.isEmpty()){
@@ -45,9 +49,81 @@ app.use('/users', usersRouter);
 //     res.json(user)
 // })
 
+// async function run(){
+//     try{
+//         const recipeCollection = mongoose.createCollection('receptiki')
+//         const recept = new Recipe({
+//             title: 'Mjaso',
+//             formula: 'vkusnaja'
+//         })
+//         const result = await recipeCollection.insertOne(recept)
+//         console.log(result)
+//         console.log(recept)
+//
+//     } catch(e) {
+//         console.log(e)
+//     }
+// }
+// run().catch(console.error)
+
+
+app.post('/', async(req, res) => {
+    try{
+        const recipes = await Recipe.create([
+            {title: 'pizza'},
+            {title: 'burger'},
+            {title: 'omlet'},
+            {title: 'pashtet'},
+            {title: 'makaronq'},
+            {title: 'Andres'}
+        ])
+        res.status(201).send()
+    }
+    catch(e){
+        res.status(500).send(e)
+    }
+})
+
+app.get('/recipe', async (req, res) => {
+
+    const recipes = await Recipe.find()
+
+
+
+    try {
+        const skip =
+            req.query.skip && /^\d+$/.test(req.query.skip) ? Number(req.query.skip) : 0
+
+        const recipes = await Recipe.find({}, undefined, { skip, limit: 5 }).sort('title')
+
+        res.send(recipes)
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
 app.listen(5000, () => {console.log("Server started on port 5000") })
 
 // app.get("/register", (req, res) => {
 //     req.body.json({"user5": ["name1", "email1", "pass1"]})
 //     .then(console.log(user5))
 // })
+
+app.post('/recipe', async (req, res) => {
+    const docs = new Recipe({
+        title: 'KFC hot chicken',
+        picture: 'pngkfdsbodf',
+        weight: '400',
+        calories: '200',
+        formula: 'flour, salt',
+        description: 'podrochui'
+    });
+    const recipe = await docs.save();
+    res.json(recipe)
+})
+
+
+app.get('/recipe', async (req, res) => {
+    const recipes = await Recipe.find({}).sort('title')
+    res.send(recipes)
+})
