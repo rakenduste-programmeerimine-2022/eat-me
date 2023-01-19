@@ -14,6 +14,9 @@ import Slider from "@mui/material/Slider";
 import { makeStyles } from '@material-ui/core/styles';
 import {OrangeButton} from "./OrangeButton";
 import FoodBar from "./FoodBar";
+import ModalCard from "./ModalCard";
+import CookerCard from "./CookerCard"
+import * as PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -209,6 +212,11 @@ export const CookerHandle = (props) => {
                     {/*{props} //offered dishes*/}
                 </Box>
             </Paper>
+            <Box style={{display: 'flex', width:'100px'}}>
+                // Здесь будет фетч
+                <ModalCard title='kuritsa' picture='' />
+                <CookerCard title='Nazvanie' weight="100kg" calories='dohuya' formula='Nihuya' picture=''/>
+            </Box>
         </main>
     )
 }

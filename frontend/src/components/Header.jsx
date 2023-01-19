@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import logo from '../images/LogoBurger.svg'
 import Button from '@material-ui/core/Button'
 import {AppBar, Container, Toolbar, IconButton, Typography, Box} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles'
@@ -36,12 +35,9 @@ export const Header = () => {
         <Container fixed>
           <Toolbar>
             <IconButton edge="start" color="inherit" aria-label="menu" className={classes.logoButton}>
-              <Link to="/"><img src={logo} height={80} alt='logo'/></Link>
+              <Link to="/"><img src='images/Logoburger.svg' height={80} alt='logo'/></Link>
             </IconButton>
             <Box className={classes.links}>
-              <Typography style={{marginRight: '30px', marginLeft: '30px'}} variant="h6">
-                <Link to="/recipes" style={{textDecoration: 'none', color: 'black'}}>Recipes</Link>
-              </Typography>
               <Typography variant="h6">
                 <Link to="/about" style={{textDecoration: 'none', color: 'black'}}>About</Link>
               </Typography>
