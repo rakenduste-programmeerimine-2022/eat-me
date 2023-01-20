@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Header } from './components/Header';
 import { Homepage } from './pages/Homepage';
 import { Recipes } from './pages/Recipes';
 import { About } from './pages/About';
@@ -9,8 +8,9 @@ import { Register } from './pages/Register';
 import { NotFoundPage } from './pages/NotFoundPage';
 import {Routes, Route} from 'react-router-dom';
 
-import {CookerModal} from './components/CookerModal';
 import {Cooker} from "./pages/Cooker";
+import RecipeUploader from "./pages/RecipeUploader";
+import {Favorites} from "./pages/Favourites";
 
 
 // import {Box} from '@material-ui/core';
@@ -31,7 +31,7 @@ function App() {
   
   return (
     <div className="App">
-      <Header/>
+
       {/* <Box>
         {(typeof backendData.users === 'undefined') ? (
           <p>Loading...</p>
@@ -47,6 +47,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/recipeUploader" element={<RecipeUploader />} />
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
