@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import {Box} from '@mui/material';
 import RecipeList from "../components/RecipeList";
 import axios from "axios";
+import {AuthHeader} from "../components/AuthHeader";
+
 
 export const Recipes = () => {
     const [recipes, setRecipes] = useState([])
@@ -13,6 +15,7 @@ export const Recipes = () => {
 
     return (
       <Box>
+         <AuthHeader/>
         <RecipeList/>
       </Box>
   )

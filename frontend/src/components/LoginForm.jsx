@@ -37,12 +37,12 @@ export const LoginForm = ({setToken}) => {
                         console.log(token)
                         // localStorage.setItem('token', token)
                         setToken(token);
-                        // return window.location = '/recipes'
                     }
                 })
         } catch (e){
             console.log(e)
         }
+        return window.location = '/recipes'
     }
 
 

@@ -34,19 +34,44 @@ exports.registerUser = async (req, res) => {
 }
 
 exports.loginUser = async(req, res) => {
-    const user = await User.findOne({ email: req.body.email})
-    if (!user) return res.send('Email not found')
-
-    const passwordValid = bcrypt.compareSync(
-        req.body.password,
-        User.passwordHash
-    )
-
-    if (!passwordValid) return res.send('Invalid password')
-
-    res.send({
-        email: user.email
+    User.findOne({
+        email: req.body.email
     })
+        .populate("roles", "-__v")
+        .exec((err,user) => {
+            if(err){
+                return res.status(500).send({message: "User not found dolbaeb"})
+            }
+            if(!user){
+                return res.status(404).send({message: "Idiot 404"})
+            }
+            const passwordValid = () => {
+                bcrypt.compareSync(req.body.password, User.passwordHash)
+            }
+            if(!passwordValid){
+                return res.status(401).send({
+                    accessToken: null,
+                    message: 'Invalid password loh'
+                });
+            }
+            let token = jwt.sign({id: user.id}, config.secret, {
+                expiresIn: 86400 //24 hours
+            })
+
+            let authorities = [];
+
+            for (let i = 0; i < user.roles.length; i++) {
+                authorities.push("ROLE_" + user.roles[i].name.toUpperCase())
+            }
+            res.header(
+                "Access-Control-Allow-Headers",
+                "x-access-token, Origin, Content-Type, Accept")
+            res.status(200).send({
+                id: user._id,
+                roles: authorities,
+                accessToken: token
+            });
+        });
 };
 
 

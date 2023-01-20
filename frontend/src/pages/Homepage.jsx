@@ -10,7 +10,7 @@ import Icon1 from "../images/HomePage_Icon1.svg"
 import Icon2 from "../images/HomePage_icon2.svg"
 import Icon3 from "../images/HomePage_Icon3.svg"
 
-
+import {Header} from "../components/Header"
 
 const useStyles = makeStyles((theme) => ({
   mainWall: {
@@ -52,7 +52,7 @@ export const Homepage = () => {
 
   return (
       <main>
-        {/* <Header/> */}
+         <Header/>
         <Paper
             className={classes.mainWall}
             style={{backgroundImage: `url(${mainWallImage})`, height: '450px'}} variant='elevation'>

@@ -213,9 +213,7 @@ export const CookerHandle = (props) => {
                 </Box>
             </Paper>
             <Box style={{display: 'flex', width:'100px'}}>
-                // Здесь будет фетч
-                <ModalCard title='kuritsa' picture='' />
-                <CookerCard title='Nazvanie' weight="100kg" calories='dohuya' formula='Nihuya' picture=''/>
+                <ModalCard title='Chicken' picture='' />
             </Box>
         </main>
     )

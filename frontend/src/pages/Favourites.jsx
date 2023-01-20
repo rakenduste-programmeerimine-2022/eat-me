@@ -1,7 +1,13 @@
 import React from 'react'
+import {AuthHeader} from "../components/AuthHeader";
 
 export const Favorites = () => {
     return (
-        <div>Favorites</div>
+        <div>
+            <div>
+                <AuthHeader/>
+            </div>
+            <div>Favourites</div>
+        </div>
     )
 }
